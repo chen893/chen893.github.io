@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <!-- <meta charset="utf-8"> -->
+     		<!-- <meta name="viewport" content="initial-scale=x,maximum-scale=x,minimum-scale=x,user-scalable=no"> -->
+       　<meta name="viewport"  charset="utf-8" content="width=device-width, initial-scale=1" />
+		<title></title>
+		<!-- <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script> -->
+		  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+		  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+		  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		  <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+
+		<style>
+
+			*{
+				margin: 0px;
+				padding: 0px;
+				font-size: 1rem;
+			}
+
+
+			.head{
+				background-color: orangered;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				height: 50px;
+				align-items: center;
+			}
+			.head a{
+				padding-left: 1.25rem;
+				padding-right:1.25rem ;
+				color: white;
+			}
+			a{
+				cursor: pointer;
+				text-decoration: none;
+			}
+			
+			
+
+
+
+			.HISTORY{
+				margin-top: 6.25rem;
+			}
+			#history{
+				width: 100%;
+                /* width: 57rem; */
+				/* margin-top: 20px; */
+				
+			}
+
+			#history td{
+				background-color: white;
+			}
+			
+			
+			
+			.tabtop13 {
+				margin-top: .8125rem;
+			}
+			.tabtop13 td{
+				background-color:#ffffff;
+				height:1.5625rem;
+				line-height:150%;
+			}
+			.font-left{ text-align:left;
+					padding: .75rem 1rem;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					word-break: break-all;
+			}
+			/* .btbg{background:#e9faff !important;} */
+			.btbg{background: #ebecf0 !important;}
+			.btbgq{background:white !important;}
+			.btbg1{background:#f2fbfe !important;}
+			.btbg2{background:#f3f3f3 !important;}
+			.biaoti{
+				font-family: 微软雅黑;
+				font-size: 1.625rem;
+				font-weight: bold;
+				border-bottom:.0625rem dashed #CCCCCC;
+				color: #255e95;
+			}
+			.titfont {
+				
+				font-family: 微软雅黑;
+				font-size: 1rem;
+				font-weight: bold;
+				color: #255e95;
+				background: url(../images/ico3.gif) no-repeat 15px center;
+				background-color:#e9faff;
+				
+				
+			}
+			.tabtxt2 {
+				font-family: 微软雅黑;
+				font-size: 14px;
+				font-weight: bold;
+				text-align: right;
+				padding-right: .625rem;
+				color:#327cd1;
+			}
+			.tabtxt3 {
+				font-family: 微软雅黑;
+				font-size: 14px;
+				padding-left: .9375rem;
+				color: #000;
+				margin-top: .625rem;
+				margin-bottom: .625rem;
+				line-height: 1.25rem;
+			}
+			
+			.btn {
+				
+			    display: inline-block;
+			    font-weight: 400;
+			    color: #212529;
+			    text-align: center;
+			    vertical-align: middle;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    background-color: transparent;
+			    border: .0625rem solid transparent;
+			    padding: .375rem .75rem;
+			    font-size: 1rem;
+			    line-height: 1.5;
+			    border-radius: .25rem;
+			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			.btn-primary {
+			    color: #fff;
+			    background-color: #007bff;
+			    border-color: #007bff;
+			}
+
+			.form-controlTable{
+				/* width: 80%; */
+				/* width: auto; */
+				height:1.5rem ;
+				 padding: .375rem .75rem;
+				font-size: 1rem;
+				 font-weight: 400;
+				 line-height: 1.5;
+				 color: #495057;
+				 background-color: #fff;
+				 background-clip: padding-box;
+				 border: .0625rem solid #ced4da;
+				 border-radius: .25rem;
+				 transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+			}
+			.custom-select-sm {
+			   height: calc(1.5em + .5rem + 2px);
+			   /* height:24px ; */
+			    padding-top: .25rem;
+			    padding-bottom: .25rem;
+			    padding-left: .5rem;
+			    font-size: .875rem;
+				margin-bottom: .9375rem;
+				/* border: 1px solid #ced4da; */
+				border-radius: .25rem;
+				outline: none;
+				transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			.FR{
+				float: right;
+			}
+			#history a{
+				text-decoration: none;
+				color: #000000;
+				
+			}
+			.group{
+				display: flex;
+				flex-wrap: wrap;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+				    /* margin-bottom: 1rem!important; */
+			}
+			.input-group-append{
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.btn11{
+				    position: relative;
+				    z-index: 2;
+					/* outline: none; */
+					color: #fff;
+					background-color: #28a745;
+					height: 3.125rem;
+					border-color: #28a745;
+					    border-top-left-radius: 0;
+					    border-bottom-left-radius: 0;
+						display: inline-block;
+						    font-weight: 400;
+						    /* color: #212529; */
+						    text-align: center;
+						    vertical-align: middle;
+						    -webkit-user-select: none;
+						    -moz-user-select: none;
+						    -ms-user-select: none;
+						    user-select: none;
+						    /* background-color: transparent; */
+						    border: .0625rem solid transparent;
+						    padding: .375rem .75rem;
+						    font-size: 1rem;
+						    /* line-height: 1.5; */
+						    border-radius: .25rem;
+						    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			}
+			.form-control11 {
+			    display: block;
+			    width: 100%;
+			    height: calc(1.5em + .75rem + 2px);
+			    padding: .375rem .75rem;
+			    font-size: 1rem;
+			    font-weight: 400;
+			    line-height: 1.5;
+			    color: #495057;
+			    background-color: #fff;
+			    background-clip: padding-box;
+			    border: .0625rem solid #ced4da;
+			    border-radius: .25rem;
+			    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+				position: relative;
+				    -ms-flex: 1 1 auto;
+				    flex: 1 1 auto;
+				    width: 1%;
+				    margin-bottom: 0;
+				}
+				.active{
+					background-color:orange;
+					    display: block;
+					    width: 80px;
+					    height: 30px;
+					    line-height: 30px;
+					    text-align: center;
+					    border: 1px solid #ff5000;
+					    border-radius: 3px;
+					    background: #ffd6cc;
+					    color: #f30;
+				}
+			
+			.form-control {
+			    /* display: ; */
+			    width: 93%;
+				height:1.5rem ;
+			    padding: .375rem .75rem;
+			   font-size: 1rem;
+			    font-weight: 400;
+			    line-height: 1.5;
+			    color: #495057;
+			    background-color: #fff;
+			    background-clip: padding-box;
+			    border: .0625rem solid #ced4da;
+			    border-radius: .25rem;
+			    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+				margin-bottom: .9375rem;
+			}
+			#LeftC{
+				/* width: 100%; */
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				margin-bottom: 3.125rem;
+				height:50px;
+				justify-content: space-evenly;
+				/* background-color: dimgrey; */
+				background-color: orange;
+				/* text-align: center; */
+			}
+			#LeftC a{
+				padding-top:0.625rem ;
+			}
+			.LC{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				/* position: absolute;
+				right: 0px; */
+				/* justify-content: center;*/
+				/* align-items: center; */
+			}
+			h4{
+				width: 100px;
+				font-size: 16px;
+			}
+			.LC a{
+				/* margin-top: .625rem; */
+				width: 100px;
+				text-decoration: none;
+				color: #000000;	
+				text-align: center;
+			}
+/* 			.Lc a:hover{
+				background-color: #000000;
+			}  */
+			
+				.LC a:hover {
+			    /* color: #f40; */
+			}
+			
+	/* 		.ADDRESS1{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			 */
+				.ShowPageO{
+					display: flex;
+					flex-direction: row;
+					flex-wrap:wrap;
+					/* justify-content: flex-end; */
+				}
+				.MainC{
+					width: 100%;
+
+					background-color: white;
+				}
+				.ADDRESS label{
+					display:inline-block;
+					
+					width: 30%;
+					/* width: 10%; */
+					/* display: block; */
+				}
+				#St{
+					display: none;
+				}
+				.HeightLight{
+						background-color: orangered;
+				}
+				@media screen and (min-width: 720px){
+				
+				.MainC{
+					width: 60%;
+				
+					background-color: white;
+				}
+				.HeightLight{
+						background-color:transparent ;
+				}
+				#St{
+					display: inline-block;
+				}
+				.LC{
+					display: flex;
+					flex-direction: column;
+					
+					/* position: absolute;
+					right: 0px; */
+					/* justify-content: center;*/
+					/* align-items: center; */
+				}
+				.form-control{
+					width: 97%;
+				}
+				#LeftC{
+					/* width: 100%; */
+					width: 20%;
+					display: flex;
+					flex-direction: row-reverse;
+					background-color: white;
+					
+					/* height: */
+					/* background-color: #000000; */
+				}
+				#LeftC a{
+					padding-top:0px ;
+				}
+					.ADDRESS label{
+						display:inline-block;
+						
+						width: 30%;
+						/* width: 10%; */
+						/* display: block; */
+					}
+					.LC a{
+						margin-top: .625rem;
+						/* width: 100px; */
+						text-decoration: none;
+						color: #000000;	
+						text-align: start;
+					}
+					.LC a:hover {
+					    color: #f40;
+					}
+					
+				}
+				@media screen and (min-width: 640px){
+				
+
+				}
+				@media screen and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
+
+				}
+				
+				@media screen and (max-width: 1000px) and (min-width: 700px) {
+
+				}
+				
+				@media screen and (min-width: 1001px) {
+					.MainC{
+						width: 60%;
+					
+						background-color: white;
+					}
+				}
+
+		</style>
+	<!-- vue.js和axios导入 -->
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+	<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+	
+	<!-- <script>
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 + 'px';
+	</script> -->
+	
+
+
+	<!-- Bootstrap导入 -->
+<!-- 	 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+	  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+	</head>
+	<body>
+		<div id='app'>
+			<div class="head" >
+				<a href="#" @click='ShowA(1)'>首页</a>
+				<a href="#" @click='ShowA(2)'>账户设置</a>
+				<a href='#' @click="ShowA(3)" >订单数据</a>
+			</div>
+			<div v-show="ShowPage1">
+				<p></p>
+			</div>
+			<div  v-show="ShowPage2" class="ShowPageO">
+				<div id='LeftC'>
+					<div class='LC'>
+						<h4 style="color:  orangered;" id="St">账号设置</h4>
+						
+							<a href="#" @click="Display(1)" v-bind:class="{HeightLight:showA}">收货地址</a>
+						
+						<!-- 保存 -->
+							<a href="#" @click="Display(2)" v-bind:class="{HeightLight:showB}">寄件人信息</a>
+						
+						
+					</div>
+					
+				</div>
+				<div class="MainC">
+					<div  class='ADDRESS' v-show="showA">
+										<div class='ADDRESS1'>
+											<label for="DDDD1">地址信息：</label>
+											<span >
+												<select v-model.trim="schoolN" id="DDDD1" @click="checkA(schoolN)" class="custom-select-sm">
+													<option>选择学校</option>
+													<option v-for="school in schools"  :value='school'>{{school.name}}</option>
+													
+												</select>
+												<select v-model.trim="addressN"   @click="checkB(addressN)"  class="custom-select-sm">
+													<option >选择区域</option>
+													<option v-for="address in schoolN.address"  :value="address">{{address.area}}</option>
+													<!-- <option value='school.address'></option> v-model= -->
+												</select>
+												<select v-model.trim="housesN"  class="custom-select-sm">
+													<option>选择宿舍</option>
+													<option v-for="house in addressN.houses" >{{house}}</option>
+												</select>
+											</span>
+										</div>
+										<label for="DDD1">详细地址：</label><input type="text" id='DDD1' v-model.trim="D1"  placeholder="请输入详细宿舍号"autocomplete='off' class="form-control"/>
+										<br>
+										<label for="DDD2">收件人姓名：</label><input type="text" id="DDD2" class="form-control" autocomplete='off' v-model.trim="D2"/>
+										<br>
+										<label for="DDD3">收件人号码：</label><input type="text" id='DDD3' class="form-control"  autocomplete='off' v-model.trim="D3"/>
+										<br>
+										<button type="submit" @click="SaveAddress()" class="btn btn-primary FR">保存</button>
+											
+											
+										<div class='HISTORY'>
+											<!-- <table id='history'> -->
+											{{UPDATA1}}
+												<table  id='history' width="100%" border="0" cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
+												  <tr>
+												<tr>
+													<th width="10%" class="btbg font-left titfont" rowspan="1">收货人</th>
+													<th width="15%" class="btbg font-left titfont">所在地区</th>
+													<th width="10%" class="btbg font-left titfont">详细地址</th>
+													<th  width="10%" class="btbg font-left titfont">手机号码</th>
+													<th width="10%"  class="btbg font-left titfont">操作</th>
+													<th  width="10%" class="btbg font-left titfont">
+					
+														
+													</th>
+													
+												</tr>
+					
+												<tr v-for="M1 in HLSA"  v-show='ShowHistory'>
+													<td class="btbgq font-left">{{M1.recipient}}</td>
+													<td class="btbgq font-left">{{M1.adr1}}</td>
+													<td class="btbgq font-left">{{M1.adr2}}</td>
+													<td class="btbgq font-left">{{M1.phone}}</td>
+												<!-- <td class="btbgq font-left">{{M1.id}}</td>  默认地址input-->
+													<td class="btbgq font-left"><a href="#" @click="CHANGEDATA(M1)">修改</a>  <a href="#" @click="DELETE(M1,1)">删除</a></td>
+													<td class="btbgq font-left " v-show='M1.id==MainAdrID' ><a  href="#" class="active">默认地址</a></td>
+													<td class="btbgq font-left"  v-show="M1.id!=MainAdrID"><a  href="#" @click="SetMain(M1.id) ">设为默认</a></td>
+													
+													
+												</tr>
+												<tr>
+													
+												</tr>
+					
+											</table>
+											
+											
+										</div>
+										
+									</div>
+									
+									<div  class='ADDRESS' v-show="showB">
+										<div class='ADDRESS1'>
+											<label for="QQQ1">寄件人姓名:</label><input type="text" id='QQQ1' v-model.trim="sender.name"  autocomplete='off' class="form-control"/>
+											<br>
+											<label for="QQQ2">寄件人号码:</label><input type="text" id='QQQ2' v-model.trim="sender.phone"  autocomplete='off' class="form-control"/>
+											<br>
+											<label for="BBB1">寄件物品:</label><input type="text" id='BBB1' v-model.trim="sender.goods_name"  autocomplete='off' class="form-control"/>
+											<br>
+											<label for="BBB2">寄件类型:</label><input type="text" id='BBB2' v-model.trim="sender.goods_type"  autocomplete='off' class="form-control"/>
+											<br>
+					
+											<!-- <select v-model="good" id="DDDD1"  class="form-control" style="height: 45px;">
+												<option>选择商品</option>
+												<option v-for="good in goods"  :value='good'>{{good.name}}</option>
+												
+											</select> -->
+					
+											<button type="submit" @click="SaveAddress2()" class="btn btn-primary FR">保存</button>
+											
+											<div class='HISTORY'>
+												<!-- <table id='history'> -->
+												{{UPDATA2}}
+												<table  id='history' width="100%" border="0" cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
+												  <tr>
+												<tr>
+													<th width="15%" class="btbg font-left titfont" rowspan="1">收货人</th>
+													<th width="15%" class="btbg font-left titfont">所在地址</th>
+					
+													<th  width="15%" class="btbg font-left titfont">手机号码</th>
+													<th width="10%"  class="btbg font-left titfont">操作</th>
+													<th  width="10%" class="btbg font-left titfont">
+					
+														
+													</th>
+													
+												</tr>
+												<tr>
+													<td class="btbgq font-left" width="10%"><input type='text' style="width:60%;overflow: hidden;" class="form-controlTable" v-model.trim="Search.SenderAdr.recipient"></td>
+													<td class="btbgq font-left"  width="25%"><input type='text' style="width: 80%;" class="form-controlTable" v-model.trim="Search.SenderAdr.adr"></td>
+													<td class="btbgq font-left"><input type='text' class="form-controlTable" style="width: 60%" v-model.trim="Search.SenderAdr.phone"></td>
+									
+													<td class="btbgq font-left" style="text-align: center;"><a href="#" @click="SearchAdr()">搜索</a></td>
+													<td>
+														<div class="input-group-append">
+														  <button class="btn11" type="submit"  style="position: relative;width: 60%;left: 20%;" v-show="DisplaySearch" @click="CancelArray()">完成</button>  
+														 </div>
+													</td>
+					
+																						
+												</tr>
+												</table>
+												<table  id='history' width="100%" border="0"  v-show='SeeAdr.see' cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
+														
+												<tr>
+													<th width="10%" class="btbg font-left titfont" rowspan="1">收货人</th>
+													<th width="15%" class="btbg font-left titfont">所在地区</th>
+													<th width="10%" class="btbg font-left titfont">详细地址</th>
+													<th  width="10%" class="btbg font-left titfont">手机号码</th>
+													<th width="10%"  class="btbg font-left titfont">操作</th>
+													<th  width="10%" class="btbg font-left titfont">
+					
+														
+													</th>
+													
+												</tr>
+					<!-- 完成 -->
+					
+					
+											<tr  v-show="!SeeAdr.Change">
+												<td class="btbgq font-left">{{ThisAdr.recipient}}</td>
+												<td class="btbgq font-left" colspan="2">{{ThisAdr.adr}}</td>
+												<!-- <td class="btbgq font-left">{{ThisAdr.adr2}}</td> -->
+												<td class="btbgq font-left">{{ThisAdr.phone}}</td>
+											<!-- <td class="btbgq font-left">{{M1.id}}</td> -->
+												<td class="btbgq font-left" style="text-align: center;"><a href="#" @click="ChangeAdrPP(ThisAdr)">修改</a>  </td>
+												<!-- <td class="btbgq font-left " v-show='M1.id==MainAdrID' ><a  href="#" class="active">默认地址</a></td> -->
+												<td class="btbgq font-left"  >
+														<div class="input-group-append">
+														  <button class="btn11" type="submit" @click="Break()" style="position: relative;width: 60%;left: 20%;">完成</button>  
+														 </div>								
+													
+												</td>
+												
+												<!-- address 完成 Go-->
+											</tr>
+					
+												
+												<tr v-show='SeeAdr.Change'>
+													<td class="btbgq font-left" width="10%"><input type='text' style="width: 60%; overflow: hidden;" class="form-controlTable" v-model.trim="ChangeMsg.recipient"></td>
+													<td class="btbgq font-left" colspan="2" width="25%"><input type='text' style="width: 80%;" class="form-controlTable" v-model.trim="ChangeMsg.adr"></td>
+													<td class="btbgq font-left"><input type='text' class="form-controlTable" style="width: 60%" v-model.trim="ChangeMsg.phone"></td>
+									
+													<td class="btbgq font-left" style="text-align: center;"><a href="#" @click="SaveChangeT()">保存</a></td>
+													<td>
+					
+													</td>
+													
+																						
+												</tr>
+												</table>								
+												
+													<table  id='history' width="100%" border="0" cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
+													  <tr>
+													<tr>
+														<th width="10%" class="btbg font-left titfont" rowspan="1">寄件人姓名</th>
+														<th width="10%" class="btbg font-left titfont">手机号码</th>
+														<th width="10%" class="btbg font-left titfont">商品名称</th>
+														<th width="10%" class="btbg font-left titfont">商品类型</th>
+														<th width="10%"  class="btbg font-left titfont">操作</th>
+														<th  width="20%" class="btbg font-left titfont">
+														<!-- <div class='group'><input type="text" placeholder="搜索单号"><input type='submit' value="搜索" class="btn btn-primary"></div> -->
+														<div class="group">
+															  <input type="text" class="form-control11" v-model.trim="ThisId" style="width: 60%;" placeholder="Search">
+															  <div class="input-group-append">
+															    <button class="btn11" type="submit" @click="SearchId()">Go</button>  
+															   </div>
+														</div>
+														</th>
+														
+													</tr>
+													<tr v-for="M1 in HLSB" v-show="!DisplaySearch">
+														<td class="btbgq font-left">{{M1.sender}}</td>
+														<td class="btbgq font-left">{{M1.sender_phone}}</td>
+														<td class="btbgq font-left">{{M1.goods_name}}</td>
+														<td class="btbgq font-left">{{M1.goods_type}}</td>
+														
+														<!-- <td class="btbgq font-left">{{M1.id}}</td> -->
+														<!-- v-model= -->
+														<td class="btbgq font-left"><a href="#" @click="CHANGEDATA2(M1)">修改</a>  <a href="#" @click="DELETE(M1,2)">删除</a></td>
+														<td class="btbgq font-left"><a href="#" @click='SeeAdrO(M1.aid)'>查看收货地址</a></td>
+														
+													</tr>
+													<!-- .id -->
+												<tr v-for="M1 in SearchArray"  v-show='DisplaySearch'>
+														<td class="btbgq font-left">{{M1.sender}}</td>
+														<td class="btbgq font-left">{{M1.sender_phone}}</td>
+														<td class="btbgq font-left">{{M1.goods_name}}</td>
+														<td class="btbgq font-left">{{M1.goods_type}}</td>
+														
+														<!-- <td class="btbgq font-left">{{M1.id}}</td> -->
+														<td class="btbgq font-left"><a href="#" @click="CHANGEDATA2(M1)">修改</a>  <a href="#" @click="DELETE(M1,3)">删除</a></td>
+														<td class="btbgq font-left"><a href="#" @click='SeeAdrO(M1.aid)'>查看收货地址</a></td>
+														
+												</tr>									
+													
+												</table>
+										</div>
+									</div>
+									
+									
+								</div>
+							</div>
+				</div>
+			<div v-show='ShowPage3' >
+		 
+<div style="display:flex;flex-direction: row;flex-wrap: wrap;justify-content:center;">
+	
+	<div style="width: 26rem;">
+		<div id="main" style=" width:25.25rem;height: 25.25rem;"></div>
+		<div style="width: 25.25rem;height:1.875rem;text-align: center;margin-top: -20px;">
+			<h1>历史地址</h1>
+		</div>
+	</div>
+<div style="width:30.5rem ;">
+		<div id='mainP' style="width:30.5rem;height: 25.25rem;"></div>
+
+	</div>
+	<div style="width:26rem;">
+		<div id="main2" style="width:25.25rem;height: 25.25rem;"></div>
+		<div style="width:25.25rem ;height:1.875rem;text-align: center;margin-top: -20px;">
+			<h1>寄件类型</h1>
+	</div>
+	
+
+</div>
+		</div>	
+		</div>
+
+		<script src="测试1.0.js"></script>
+	</body>
+</html>
