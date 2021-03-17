@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-       
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <!-- <meta charset="utf-8"> -->
+     		<!-- <meta name="viewport" content="initial-scale=x,maximum-scale=x,minimum-scale=x,user-scalable=no"> -->
        　<meta name="viewport"  charset="utf-8" content="width=device-width, initial-scale=1" />
 		<title></title>
 		<!-- <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script> -->
@@ -414,16 +414,27 @@
 				}
 
 		</style>
-
+	<!-- vue.js和axios导入 -->
 	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 	<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 	<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+	
+	<!-- <script>
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 + 'px';
+	</script> -->
+	
 
+
+	<!-- Bootstrap导入 -->
+<!-- 	 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+	  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 	</head>
 	<body>
 		<div id='app'>
 			<div class="head" >
-				<a href="#" @click='ShowA(1)'>首页</a>
+				<a href="#" @click= 'getM()'>首页</a>
 				<a href="#" @click='ShowA(2)'>账户设置</a>
 				<a href='#' @click="ShowA(3)" >订单数据</a>
 			</div>
